@@ -8,7 +8,7 @@ function Footer() {
             className="grey-text text-lighten-4 right" 
             target="_blank" 
             rel="noreferrer"
-            href="https://github.com/oxymc/movies">
+            href="https://github.com/oxymc/react-shop">
               GitHub
           </a>
           </div>

@@ -4,7 +4,7 @@ function Header() {
       <div className="nav-wrapper container">
         <span className="brand-logo">OXYG Shop Project</span>
         <ul id="nav-mobile" className="hide-on-med-and-down grey darken-3">
-          <li><a href="https://github.com/oxymc/movies" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="https://github.com/oxymc/react-shop" target="_blank" rel="noreferrer">GitHub</a></li>
         </ul>
       </div>
     </nav>
