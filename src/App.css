@@ -1,38 +1,227 @@
-.App {
-  text-align: center;
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav .brand-logo {
+  position: static;
+  transform: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+main {
+  min-height: calc(100vh - 154px);
+}
+h1, .row.fogrid {
+  position: relative;
+}
+main[data-modal="opened"] h1,
+main[data-modal="opened"] .row.fogrid,
+main[data-modal="opened"] .basket {
+  filter: blur(10px);
+  z-index: -1;
+}
+.foFlex {
+  display: flex;
+  align-items: center;
+}
+.card {
+  flex-wrap: wrap;
+}
+.card .card-image {
+  width: 100%;
+  height: 230px;
+  background-color: #ccc;
+}
+.card .card-image img {
+  margin: auto;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+}
+.card span.card-title {
+  font-weight: 500;
+}
+.card-action {
+  width: 100%;
+  justify-content: space-between;
+}
+.App .btn {
+  background-color: #424242;
+}
+.App .btn:hover {
+  background-color: black;
+}
+.fogrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 1rem;
+}
+.prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+.price {
+  font-weight: 500;
+}
+.old-price {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.basket {
+  position: fixed;
+  z-index: 2;
+  top: 80px;
+  right: 20px;
+  left: auto;
+  bottom: auto;
+  height: auto;
+  max-width: 60px;
+  overflow: hidden;
+}
+.basket button.btn {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  font-size: 12px;
+}
+.basket-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 80px;
+  width: 50%;
+  max-height: 80vh;
+  overflow-y: visible;
+  margin: auto;
+  min-width: 320px;
+  display: flex;
+  background: #fff;
+  flex-wrap: wrap;
+  animation: show 300ms ease-out;
+}
+.basket-wrapper p {
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: calc(100% - 145px);
+  min-height: 70vh;
+  margin: auto;
+}
+.basket-wrapper li.collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.basket-wrapper li.collection-header + li {
+  margin-top: 60px;
+}
+.basket-wrapper li:first-child {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  max-width: calc(50% - 2px);
+  min-width: 318px;
+  z-index: 1;
+}
+.basket-wrapper li:last-child {
+  margin-top: auto;
+}
+.basket-wrapper li.collection-header h4 {
+  margin: 0;
+}
+.basket-wrapper li {
+  width: 100%;
+  height: max-content;
+}
+.basket-wrapper .img {
+  width: 50px;
+  background-color: #ccc;
+}
+.basket-wrapper img {
+  max-width: 100%;
+}
+.basket-wrapper .name {
+  width: 40%;
+}
+.basket-wrapper .price {
+  width: 80px;
+  text-align: right;
+}
+.collection.with-header .collection-item {
+  padding-left: 15px;
+}
+li.collection-item.special {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 500;
+  position: relative;
+}
+.delete {
+  color: red;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete:hover, .change:hover {
+  opacity: 1;
+}
+.change {
+  opacity: 0.5;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.adding-product {
+  position: fixed;
+  top: 140px;
+  right: 20px;
+  z-index: 1;
   color: white;
+  animation: showText 300ms ease-in-out;
+}
+.adding-product p {
+  padding: 10px 15px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes show {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes showText {
+  from {
+    opacity: 0;
+    top: 80px;
+  }
+  to {
+    opacity: 1;
+    top: 140px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .delete {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #fff;
   }
 }
