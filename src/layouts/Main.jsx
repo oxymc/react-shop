@@ -12,6 +12,9 @@ function Main() {
   const [showBasket, setShowBasket] = useState(false)
   const [adding, setAdding] = useState(false)
   const [alertName, setAlertName] = useState('')
+  const [sorting, setSorting] = useState(false)
+  const [byPriceDown, setByPriceDown] = useState(false)
+  const [byPriceUp, setByPriceUp] = useState(false)
 
   const checkModal = showBasket === true ? 'opened' : 'closed'
 
@@ -93,6 +96,30 @@ function Main() {
     setShowBasket(!showBasket)
   }
 
+  const applySort = (e) => {
+    setSorting(true)
+    e.target.classList.add('active')
+    const curTarget = e.target.dataset
+    return changeSort(curTarget)
+  }
+
+  const cancelSort = () => {
+    setSorting(false)
+    setByPriceUp(false)
+    setByPriceDown(false)
+  }
+
+  const changeSort = (curTarget) => {
+    if(curTarget.sort === 'low') {
+      setByPriceDown(true)
+      setByPriceUp(false)
+    }
+    else {
+      setByPriceDown(false)
+      setByPriceUp(true)
+    }
+  }
+
   useEffect(() => {
     fetch(API_URL, {
       headers: {
@@ -120,7 +147,17 @@ function Main() {
         showHideBasket={showHideBasket}
         adding={adding}
         alertName={alertName} />
-      {loading ? <Loader /> : <ItemList items={items} onBuy={onBuy} adding={adding} />} 
+      {loading ? <Loader /> :
+        <ItemList 
+          items={items} 
+          onBuy={onBuy} 
+          adding={adding} 
+          sorting={sorting} 
+          byPriceDown={byPriceDown} 
+          byPriceUp={byPriceUp} 
+          applySort={applySort}
+          cancelSort={cancelSort}
+          />} 
       {showBasket &&
       <BasketList
         order={order}
@@ -133,6 +170,6 @@ function Main() {
   );
 }
 
-export default Main;
+export {Main};
 
 

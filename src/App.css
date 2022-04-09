@@ -196,6 +196,22 @@ li.collection-item.special {
 .adding-product p {
   padding: 10px 15px;
 }
+.sort {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+[data-sort] {
+  opacity: 0.8;
+  cursor: pointer;
+}
+[data-sort].active {
+  pointer-events: none;
+  opacity: 0.5;
+}
+[data-sort]:hover {
+  opacity: 1;
+}
 
 @keyframes show {
   from {

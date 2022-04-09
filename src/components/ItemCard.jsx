@@ -17,9 +17,8 @@ function ItemCard(props) {
       </div>
       <div className="card-action foFlex">
         <div className="prices">
-          {+price.regularPrice !== +price.finalPrice ?
-          <div className="old-price">$ {price.regularPrice}</div> :
-          null
+          {+price.regularPrice !== +price.finalPrice &&
+          <div className="old-price">$ {price.regularPrice}</div>
           }
           <div className="price">$ {price.finalPrice}</div> 
         </div>
